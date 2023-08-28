@@ -1,4 +1,4 @@
-# Java Spring Boot 3 Project 1
+# Java Spring Boot - Spring MVC with Thymeleaf project
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/amac81/Javasbmvc01/blob/main/LICENSE)
 
 
