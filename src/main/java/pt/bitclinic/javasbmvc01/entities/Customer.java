@@ -28,6 +28,21 @@ public class Customer implements Serializable {
 
 	public Customer() {
 	}
+		
+	public Customer(Long id, String firstName, String lastName, int freePasses) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.freePasses = freePasses;
+	}
+		
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;

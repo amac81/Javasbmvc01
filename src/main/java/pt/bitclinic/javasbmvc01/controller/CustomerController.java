@@ -1,5 +1,8 @@
 package pt.bitclinic.javasbmvc01.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,9 @@ import pt.bitclinic.javasbmvc01.entities.Customer;
 @Controller
 public class CustomerController {
 
+	List<Customer> customers = new ArrayList<>();
+	
+		
 	// Pre-process all web requests coming into our Controller
 	// Pre-process every String form data; remove leading and trailing white space
 	// if String only has white space... "trim" it to null
@@ -27,21 +33,23 @@ public class CustomerController {
 		webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
 	}
 
-	@GetMapping("/")
+	@GetMapping("/customers")
 	public String showForm(Model theModel) {
-		theModel.addAttribute("customer", new Customer());
+		theModel.addAttribute("customers", customers);
+		Customer customer = new Customer(); 
+		customer.setId(0L);
+		theModel.addAttribute("customer", customer);
 
 		return "customer-form";
 	}
 
-	@PostMapping("/processForm")
+	@PostMapping("/customers")
 	public String processForm(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult) {
-
-		if (theBindingResult.hasErrors()) {
-			return "customer-form";
-		} else {
-			return "customer-confirmation";
+		if (!theBindingResult.hasErrors()) {
+			theCustomer.setId(0L);
+			customers.add(theCustomer);
 		}
+		
+		return "redirect:/customers";		
 	}
-
 }
