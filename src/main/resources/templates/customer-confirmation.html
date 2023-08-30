@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+	<!-- reference CSS file -->
+	<link rel="stylesheet" th:href="@{/css/custom.css}" />
+	<title>Customer confirmation</title>
+</head>
+
+<body>
+	<p>Success!</p>
+
+	<p>Registration of customer <span style="color:#8ebf42;">
+		<span th:text="${customer.firstName}" th:remove="tag"></span> </span>confirmed.</p>
+</body>
+
+</html>
