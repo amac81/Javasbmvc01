@@ -3,16 +3,25 @@
 <html xmlns="http://www.thymeleaf.org">
 
 <head>
-	<!-- reference CSS file -->
-	<link rel="stylesheet" th:href="@{/css/custom.css}" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" th:href="@{/css/styles.css}" />
 	<title>Customer confirmation</title>
 </head>
 
 <body>
-	<p>Success!</p>
+	<div class="maindiv">
+		<p>Success!</p>
 
-	<p>Registration of customer <span style="color:#8ebf42;">
-		<span th:text="${customer.firstName}" th:remove="tag"></span> </span>confirmed.</p>
+		<p>Registration of customer <span class="field">
+				<span th:text="${customer.firstName}" th:remove="tag"></span> </span>confirmed.</p>
+	</div>
 </body>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="@{/css/scripts.js}" />
+</script>
 
 </html>

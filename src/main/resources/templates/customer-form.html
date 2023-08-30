@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.thymeleaf.org">
-	<head>
-		<!-- reference CSS file -->
-		<link rel="stylesheet" th:href="@{/css/custom.css}"/>
-		<title>Customer form</title>
-	</head>
-	<body>
-		<form th:action="@{/processForm}" th:object="${customer}" method="POST">
-			First Name: <input type="text" th:field="*{firstName}"/>
-			<br><br>
-			Last Name(*): <input type="text" th:field="*{lastName}"/>
-			
-			<!--Show error message (if present) -->
-			<span th:if="${#fields.hasErrors('lastName')}"
-				  th:errors="*{lastName}" class="error">
-			</span>
-			<br><br>
-			
-			<input type="submit" value="Submit"/>			
-		</form>
-	</body>
+
+<head>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" th:href="@{/css/styles.css}" />
+	<title>Customer form</title>
+</head>
+<body class="container">
+	<h1 class="py-5">Thymeleaf Form handling Demo</h1>
+	<i>Fill out the form. Asterisk (*) means required.</i>
+	<form method="post" th:action="@{/processForm}" th:object="${customer}" class="col card p-3 mb-5">
+		<div class="form-group">
+			<label for="firstName">First Name</label>
+			<input id="firstName" placeholder="Enter First Name" type="text" th:field="*{firstName}"
+				class="form-control" />
+			<label> <!--Show error message (if present) -->
+				<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></span>
+			</label>
+		</div>
+		<div class="form-group">
+			<label for="lastName">Last Name</label>
+			<input id="lastName" placeholder="Enter Last Name" type="text" th:field="*{lastName}"
+				class="form-control" />
+			<label> <!--Show error message (if present) -->
+				<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></span>
+			</label>
+		</div>
+		<div class="form-group">
+			<label for="freePassese">Free passes</label>
+			<input id="freePasses" placeholder="Enter Free Passes" type="text" th:field="*{freePasses}"
+				class="form-control" />
+			<label> <!--Show error message (if present) -->
+				<span th:if="${#fields.hasErrors('freePasses')}" th:errors="*{freePasses}" class="error"></span>
+			</label>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Register Customer">
+	</form>
+	</div>
+</body>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="@{/css/scripts.js}" />
+</script>
+
 </html>
