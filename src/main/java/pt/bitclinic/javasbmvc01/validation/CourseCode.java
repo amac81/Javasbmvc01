@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import pt.bitclinic.javasbmvc01.constraints.CourseCodeConstraintValidator;
 
 @Constraint(validatedBy = CourseCodeConstraintValidator.class)
 @Target({ ElementType.METHOD, ElementType.FIELD})

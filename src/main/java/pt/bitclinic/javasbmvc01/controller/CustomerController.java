@@ -45,6 +45,7 @@ public class CustomerController {
 
 	@PostMapping("/customers")
 	public String processForm(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult) {
+		
 		if (!theBindingResult.hasErrors()) {
 			theCustomer.setId(0L);
 			customers.add(theCustomer);

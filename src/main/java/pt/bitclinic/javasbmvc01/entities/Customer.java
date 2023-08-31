@@ -33,7 +33,7 @@ public class Customer implements Serializable {
 	@Pattern(regexp = "^\\d{4}-\\d{3}$", message="must be in the form ####-###") // PT postal code ####-###
 	private String postalCode;
 	
-	@CourseCode(value="TEC", message="must start with TEC")
+	@CourseCode(value="TIC", message="must start with TIC")
 	private String courseCode;
 
 
