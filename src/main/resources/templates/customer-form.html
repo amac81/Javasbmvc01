@@ -18,7 +18,7 @@
 	<i>Fill out the form. Asterisk (*) means required.</i>
 	<form method="post" th:action="@{/customers}" th:object="${customer}" class="col card p-3 mb-5">
 		<div class="form-group">
-			<label for="firstName">First Name</label>
+			<label for="firstName">First Name (*)</label>
 			<input id="firstName" placeholder="Enter First Name" type="text" th:field="*{firstName}"
 				class="form-control" />
 			<label for="firstName"> <!--Show error message (if present) -->
@@ -26,7 +26,7 @@
 			</label>
 		</div>
 		<div class="form-group">
-			<label for="lastName">Last Name</label>
+			<label for="lastName">Last Name (*)</label>
 			<input id="lastName" placeholder="Enter Last Name" type="text" th:field="*{lastName}"
 				class="form-control" />
 			<label for="lastName"> <!--Show error message (if present) -->
@@ -41,6 +41,15 @@
 				<span th:if="${#fields.hasErrors('freePasses')}" th:errors="*{freePasses}" class="error"></span>
 			</label>
 		</div>
+		<div class="form-group">
+			<label for="postalCode">Postal code (*)</label>
+			<input id="postalCode" placeholder="Enter Postal Code" type="text" th:field="*{postalCode}"
+				class="form-control" />
+			<label for="postalCode"> <!--Show error message (if present) -->
+				<span th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" class="error"></span>
+			</label>
+		</div>
+
 		<input type="submit" class="btn btn-primary" value="Register Customer">
 	</form>
 	<table class="table table-striped table-bordered">
@@ -48,6 +57,7 @@
 			<th>First Name</th>
 			<th>Last Name</th>
 			<th>Free Passes</th>
+			<th>Postal Code</th>
 		</tr>
 		<tr th:if="${#lists.isEmpty(customers)}">
 			<td colspan="3">No Customers found. Add some ...</td>
@@ -56,6 +66,7 @@
 			<td th:text="${customer.firstName}"></td>
 			<td th:text="${customer.lastName}"></td>
 			<td th:text="${customer.freePasses}"></td>
+			<td th:text="${customer.postalCode}"></td>
 		</tr>
 	</table>
 	</div>

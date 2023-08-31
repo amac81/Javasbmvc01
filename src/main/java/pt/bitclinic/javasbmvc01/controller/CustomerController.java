@@ -36,7 +36,8 @@ public class CustomerController {
 	@GetMapping("/customers")
 	public String showForm(Model theModel) {
 		theModel.addAttribute("customers", customers);
-		Customer customer = new Customer(); 
+		Customer customer = new Customer();
+		customer.setFreePasses(null);
 		customer.setId(0L);
 		theModel.addAttribute("customer", customer);
 
@@ -48,8 +49,12 @@ public class CustomerController {
 		if (!theBindingResult.hasErrors()) {
 			theCustomer.setId(0L);
 			customers.add(theCustomer);
+			return "redirect:/customers";
 		}
-		
-		return "redirect:/customers";		
+		else 
+		{
+			return "customer-form";
+		}
+				
 	}
 }
