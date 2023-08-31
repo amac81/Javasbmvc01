@@ -34,6 +34,14 @@
 			</label>
 		</div>
 		<div class="form-group">
+			<label for="courseCode">Course code</label>
+			<input id="courseCode" placeholder="Enter Course Code" type="text" th:field="*{courseCode}"
+				class="form-control" />
+			<label for="courseCode"> <!--Show error message (if present) -->
+				<span th:if="${#fields.hasErrors('courseCode')}" th:errors="*{courseCode}" class="error"></span>
+			</label>
+		</div>		
+		<div class="form-group">
 			<label for="freePasses">Free passes (*)</label>
 			<input id="freePasses" placeholder="Enter Free Passes" type="text" th:field="*{freePasses}"
 				class="form-control" />
@@ -56,15 +64,17 @@
 		<tr>
 			<th>First Name</th>
 			<th>Last Name</th>
+			<th>Course Code</th>
 			<th>Free Passes</th>
 			<th>Postal Code</th>
 		</tr>
 		<tr th:if="${#lists.isEmpty(customers)}">
-			<td colspan="4">No Customers found. Add some ...</td>
+			<td colspan="5">No Customers found. Add some ...</td>
 		</tr>
 		<tr th:each="customer : ${customers}">
 			<td th:text="${customer.firstName}"></td>
 			<td th:text="${customer.lastName}"></td>
+			<td th:text="${customer.courseCode}"></td>
 			<td th:text="${customer.freePasses}"></td>
 			<td th:text="${customer.postalCode}"></td>
 		</tr>

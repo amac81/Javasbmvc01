@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import pt.bitclinic.javasbmvc01.validation.CourseCode;
 
 public class Customer implements Serializable {
 
@@ -31,16 +32,21 @@ public class Customer implements Serializable {
 	@NotNull(message = "is required")
 	@Pattern(regexp = "^\\d{4}-\\d{3}$", message="must be in the form ####-###") // PT postal code ####-###
 	private String postalCode;
+	
+	@CourseCode(value="TEC", message="must start with TEC")
+	private String courseCode;
+
 
 	public Customer() {
 	}
 
-	public Customer(Long id, String firstName, String lastName, int freePasses, String postalCode) {
+	public Customer(Long id, String firstName, String lastName, int freePasses, String postalCode, String courseCode) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.freePasses = freePasses;
 		this.postalCode = postalCode;
+		this.courseCode = courseCode;
 	}
 
 	public Long getId() {
@@ -83,6 +89,14 @@ public class Customer implements Serializable {
 		this.postalCode = postalCode;
 	}
 
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -103,7 +117,8 @@ public class Customer implements Serializable {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", freePasses="
-				+ freePasses + ", postalCode=" + postalCode + "]";
+				+ freePasses + ", postalCode=" + postalCode + ", courseCode=" + courseCode + "]";
 	}
+
 
 }
