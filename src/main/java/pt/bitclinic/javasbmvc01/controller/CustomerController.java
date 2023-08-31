@@ -37,7 +37,6 @@ public class CustomerController {
 	public String showForm(Model theModel) {
 		theModel.addAttribute("customers", customers);
 		Customer customer = new Customer();
-		customer.setFreePasses(null);
 		customer.setId(0L);
 		theModel.addAttribute("customer", customer);
 

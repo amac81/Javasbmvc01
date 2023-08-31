@@ -22,7 +22,8 @@ public class Customer implements Serializable {
 	@NotNull(message = "is required")
 	@Size(min = 1, message = "is required")
 	private String lastName;
-
+	
+	@NotNull(message = "is required")
 	@Min(value = 0, message = "must be greater than or equal to zero")
 	@Max(value = 10, message = "must be less than or equal to ten")
 	private Integer freePasses;

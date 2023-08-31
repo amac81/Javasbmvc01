@@ -34,7 +34,7 @@
 			</label>
 		</div>
 		<div class="form-group">
-			<label for="freePasses">Free passes</label>
+			<label for="freePasses">Free passes (*)</label>
 			<input id="freePasses" placeholder="Enter Free Passes" type="text" th:field="*{freePasses}"
 				class="form-control" />
 			<label for="freePasses"> <!--Show error message (if present) -->
@@ -60,7 +60,7 @@
 			<th>Postal Code</th>
 		</tr>
 		<tr th:if="${#lists.isEmpty(customers)}">
-			<td colspan="3">No Customers found. Add some ...</td>
+			<td colspan="4">No Customers found. Add some ...</td>
 		</tr>
 		<tr th:each="customer : ${customers}">
 			<td th:text="${customer.firstName}"></td>
